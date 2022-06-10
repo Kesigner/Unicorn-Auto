@@ -1,0 +1,16 @@
+regexp:(api|ps|sv|offnavi|newvector|ulog\.imap|newloc)(\.map|)\.(baidu|n\.shifen)\.com
+regexp:(.*.||)(gov|12377|12315|talk.news.pts.org|cread­ers|zhuich­aguoji|efcc.org|cy­ber­po­lice|abolu­owang|tu­idang|epochtimes|ny­times|zhengjian|110.qq|mingjingnews|in­medi­ahk|xin­sheng|banned­book|nt­dtv|12321|se­cretchina|epochweekly|cn.rfi).(cn|com|org|net|club|net|fr|tw|hk)
+regexp:(torrent|\.torrent|peer_id=|info_hash|get_peers|find_node|BitTorrent|announce_peer|announce\.php\?passkey=)
+regexp:(.?)(xunlei|sandai|Thunder|XLLiveUD|IDM|IDMan)(.)
+regexp:BitTorrent protocol
+regexp:(.*\.||)(appledaily|dafahao|minghui|dongtaiwang|epochtimes|ntdtv|falundafa|wujieliulan|zhengjian|soundofhope)\.(org|com|net|tw|hk|rocks)
+regexp:(^.*\@)(guerrillamail|guerrillamailblock|sharklasers|grr|pokemail|spam4|bccto|chacuo|027168)\.(info|biz|com|de|net|org|me|la)
+regexp:(.*\.||)(metatrader4|metatrader5|mql5)\.(org|com|net)
+regexp:(.*\.||)(mingjinglive|chinaaid|botanwang|xinsheng|rfi|breakgfw|chengmingmag|jinpianwang|xizang-zhiye|breakgfw|qi-gong|voachinese|mhradio|rfa|edoors|edoors|renminbao|soundofhope|zhengjian|dafahao|minghui|dongtaiwang|epochtimes|ntdtv|falundafa|wujieliulan|aboluowang|bannedbook|secretchina|dajiyuan|boxun|chinadigitaltimes|huaglad|dwnews|creaders|oneplusnews|rfa)\.(cn|com|org|net|club|net|fr|tw|hk|eu|info|me)
+regexp:(.*\.||)(gov|12377|12315|talk.news.pts.org|creaders|zhuichaguoji|efcc.org|cyberpolice|aboluowang|tuidang|epochtimes|nytimes|dafahao|falundafa|minghui|falunaz|zhengjian|110.qq|mingjingnews|inmediahk|xinsheng|bannedbook|ntdtv|falungong|12321|secretchina|epochweekly|cn.rfi)\.(cn|com|org|net|club|net|fr|tw|hk|eu|info|me)
+regexp:(.*\\.||)(mycard|gash)\\.(com|tw)
+regexp:(torrent|\\.torrent|peer_id=|info_hash|get_peers|find_node|BitTorrent|announce_peer|announce\\.php\\?passkey=|Joker)
+regexp:(\\.guanjia\\.qq\\.com|qqpcmgr|QQPCMGR)
+regexp:(.*\\.||)(taobao)\.(com)
+regexp:Private Tracker protocol
+regexp:(.*\\.||)(rising|kingsoft|duba|xindubawukong|jinshanduba)\.(com|net|org)
