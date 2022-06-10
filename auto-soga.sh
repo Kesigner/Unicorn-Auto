@@ -5,41 +5,14 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
-ask_if()
-{
-    read -p "开启隧道,是否继续？(y/n)" para
 
-    case $para in 
-    [yY])
-    input_soga
-    echo -e "已添加隧道配置~"
-    ;;
-    [nN])
-    sed -i '$a tunnel_enable=false' /etc/soga/soga.conf
-    echo -e "已关闭隧道配置~"
-    ;;
-    *)
-    echo "输入错误"
-    exit 1
-    ;;
-    esac # end case
-}
 
-input_soga()
-{
-     sed -i '$a tunnel_enable=true' /etc/soga/soga.conf
-     sed -i '$a tunnel_type=ws-tunnel' /etc/soga/soga.conf
-     sed -i '$a tunnel_password=3a00afbc-302f-41a5-986c-7bcdda0c83a7' /etc/soga/soga.conf
-     sed -i '$a tunnel_method=aes-256-gcm' /etc/soga/soga.conf
-     sed -i '$a tunnel_ws_path=/' /etc/soga/soga.conf
-}
-
-download_unicorn(){
+download_trojan(){
 	echo "正在安装soga . . ."
 	bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/soga/master/install.sh)
 	rm -f /etc/soga/soga.conf
 	rm -f /etc/soga/blockList
-	wget -P /etc/soga https://raw.githubusercontent.com/Kesigner/unicorn/main/unicorn-config/soga.conf
+	wget -P /etc/soga https://raw.githubusercontent.com/Kesigner/unicorn/main/unicorn-config/trojan-soga.conf -O soga.conf
 	wget -P /etc/soga https://raw.githubusercontent.com/Kesigner/unicorn/main/unicorn-config/blockList
     echo -e "已添加soga审计"
 	cd /etc/soga
@@ -98,3 +71,36 @@ esac
 }
 
 shon_online
+
+
+#ss
+
+
+ask_if()
+{
+    read -p "开启隧道,是否继续？(y/n)" para
+
+    case $para in 
+    [yY])
+    input_soga
+    echo -e "已添加隧道配置~"
+    ;;
+    [nN])
+    sed -i '$a tunnel_enable=false' /etc/soga/soga.conf
+    echo -e "已关闭隧道配置~"
+    ;;
+    *)
+    echo "输入错误"
+    exit 1
+    ;;
+    esac # end case
+}
+
+input_soga()
+{
+     sed -i '$a tunnel_enable=true' /etc/soga/soga.conf
+     sed -i '$a tunnel_type=ws-tunnel' /etc/soga/soga.conf
+     sed -i '$a tunnel_password=3a00afbc-302f-41a5-986c-7bcdda0c83a7' /etc/soga/soga.conf
+     sed -i '$a tunnel_method=aes-256-gcm' /etc/soga/soga.conf
+     sed -i '$a tunnel_ws_path=/' /etc/soga/soga.conf
+}
