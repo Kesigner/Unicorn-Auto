@@ -12,82 +12,82 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 install_soga(){
-	>>
+	echo ""
     echo -e "${green}正在安装soga . . .${plain}"
-    >>
+    echo ""
 	bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/soga/master/install.sh)
 	rm -f /etc/soga/soga.conf
 	rm -f /etc/soga/blockList
-    >>
+    echo ""
     echo -e "${green}soga安装完毕，初始化环境已就绪！>> 进入soga初始化对接！${plain}"
-    >>
+    echo ""
 	shon_online
 }
 
 download_trojan(){
-	>>
+	echo ""
     echo -e "${green}开始安装trojan配置文件 . . .${plain}"
-    >>
+    echo ""
 	wget -P /etc/soga https://raw.githubusercontent.com/Kesigner/Unicorn-Auto/main/conf/trojan-soga.conf
     mv /etc/soga/trojan-soga.conf /etc/soga/soga.conf
-    >>
+    echo ""
     echo -e "${green}trojan配置文件已下发完成！${plain}"
-    >>
+    echo ""
 	wget -P /etc/soga https://raw.githubusercontent.com/Kesigner/Unicorn-Auto/main/blockList
-    >>
+    echo ""
     echo -e "${green}soga审计规则已下发完成！${plain}"
-    >>
+    echo ""
     wget -P /etc/soga https://raw.githubusercontent.com/Kesigner/Unicorn-Auto/main/certificates/ip172666023.mobgslb.tbcache.com_chain.crt
     wget -P /etc/soga https://raw.githubusercontent.com/Kesigner/Unicorn-Auto/main/certificates/ip172666023.mobgslb.tbcache.com_key.key
-    >>
+    echo ""
     echo -e "${green}TLS证书配置已下发完成！${plain}"
     echo -e "${green}开始进行soga对接 . . .${plain}"
-    >>
+    echo ""
 	cd /etc/soga
-    >>
+    echo ""
 	printf "${green}请输入节点ID：${plain}"
-    >>
+    echo ""
 	read -r nodeId <&1
 	sed -i "s/ID_HERE/$nodeId/" soga.conf
     soga restart
-    >>
+    echo ""
 	echo -e "${green}正在重启soga服务端！${plain}"
-    >>
+    echo ""
 	shon_online
 }
 
 add_shenji(){
-    >>
+    echo ""
 	echo "${green}正在添加审计 . . .${plain}"
-    >>
+    echo ""
     	rm -f /etc/soga/blockList
     	wget -P /etc/soga https://raw.githubusercontent.com/Kesigner/unicorn/main/unicorn-config/blockList
-        >>
+        echo ""
         echo -e "${green}soga审计规则已下发完成！${plain}"
-        >>
+        echo ""
 	shon_online
 }
 
 start_soga(){
-    >>
+    echo ""
 	echo "${green}正在启动soga . . .${plain}"
-    >>
+    echo ""
 	soga start
 	shon_online
 }
 
 restart_soga(){
-    >>
+    echo ""
 	echo "${green}正在重启soga . . .${plain}"
-    >>
+    echo ""
 	soga restart
 	shon_online
 }
 
 uninstall_soga(){
-    >>
+    echo ""
     echo -e "${green}正在卸载soga . . .${plain}"
-    >>
+    echo ""
     systemctl stop soga
     systemctl disable soga
     rm /etc/systemd/system/soga.service -f
@@ -98,9 +98,7 @@ uninstall_soga(){
     rm /usr/bin/soga -f
 
     echo ""
-    >>
     echo -e "卸载成功"
-    >>
     echo ""
 	shon_online
 }
