@@ -13,7 +13,7 @@ fi
 
 install_soga(){
 	>>
-    echo "${green}正在安装soga . . .${plain}"
+    echo -e "${green}正在安装soga . . .${plain}"
     >>
 	bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/soga/master/install.sh)
 	rm -f /etc/soga/soga.conf
@@ -26,7 +26,7 @@ install_soga(){
 
 download_trojan(){
 	>>
-    echo "${green}开始安装trojan配置文件 . . .${plain}"
+    echo -e "${green}开始安装trojan配置文件 . . .${plain}"
     >>
 	wget -P /etc/soga https://raw.githubusercontent.com/Kesigner/Unicorn-Auto/main/conf/trojan-soga.conf
     mv /etc/soga/trojan-soga.conf /etc/soga/soga.conf
@@ -41,7 +41,7 @@ download_trojan(){
     wget -P /etc/soga https://raw.githubusercontent.com/Kesigner/Unicorn-Auto/main/certificates/ip172666023.mobgslb.tbcache.com_key.key
     >>
     echo -e "${green}TLS证书配置已下发完成！${plain}"
-    echo "${green}开始进行soga对接 . . .${plain}"
+    echo -e "${green}开始进行soga对接 . . .${plain}"
     >>
 	cd /etc/soga
     >>
@@ -86,7 +86,7 @@ restart_soga(){
 
 uninstall_soga(){
     >>
-    echo "${green}正在卸载soga . . .${plain}"
+    echo -e "${green}正在卸载soga . . .${plain}"
     >>
     systemctl stop soga
     systemctl disable soga
