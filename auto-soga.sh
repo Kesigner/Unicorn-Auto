@@ -55,10 +55,25 @@ restart_soga(){
 }
 
 uninstall_soga(){
-	echo "${red}正在卸载soga . . .${plain}"
-	soga uninstall
+    confirm "确定要卸载 soga 吗?" "n"
+    if [[ $? != 0 ]]; then
+        if [[ $# == 0 ]]; then
+            show_menu
+        fi
+        return 0
+    fi
+    systemctl stop soga
+    systemctl disable soga
+    rm /etc/systemd/system/soga.service -f
+    systemctl daemon-reload
+    systemctl reset-failed
+    rm /etc/soga/ -rf
+    rm /usr/local/soga/ -rf
     rm /usr/bin/soga -f
-    echo "${red}soga卸载完毕 . . .${plain}"
+
+    echo ""
+    echo -e "卸载成功"
+    echo ""
 	shon_online
 }
 
