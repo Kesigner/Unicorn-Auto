@@ -44,7 +44,7 @@ download_trojan(){
     echo -e "${green}开始进行soga对接 . . .${plain}"
     echo ""
 	cd /etc/soga
-	printf "${green}请输入节点ID： ${plain}"
+	printf "${green}请输入节点ID：${plain}"
 	read -r nodeId <&1
 	sed -i "s/ID_HERE/$nodeId/" soga.conf
     soga restart
