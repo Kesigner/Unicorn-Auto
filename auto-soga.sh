@@ -5,8 +5,6 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
-
-
 install_soga(){
 	echo "正在安装soga . . ."
 	bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/soga/master/install.sh)
@@ -43,13 +41,13 @@ add_shenji(){
 	shon_online
 }
 
-start_unicorn(){
+start_soga(){
 	echo "正在启动soga . . ."
 	soga start
 	shon_online
 }
 
-restart_unicorn(){
+restart_soga(){
 	echo "正在重启soga . . ."
 	soga restart
 	shon_online
@@ -72,8 +70,8 @@ read N
 case $N in
   1) install_soga ;;
   2) download_trojan ;;
-  3) start_unicorn ;;
-  4) restart_unicorn ;;
+  3) start_soga ;;
+  4) restart_soga ;;
   5) soga status ;;
   6) soga log ;;
   7) add_shenji ;;
