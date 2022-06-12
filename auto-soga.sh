@@ -16,7 +16,7 @@ install_soga(){
 
 download_trojan(){
 	echo "开始安装trojan配置文件 . . ."
-	wget -P /etc/soga https://raw.githubusercontent.com/Kesigner/Unicorn-Auto/main/conf/trojan-soga.conf -O soga.conf
+	wget -P /etc/soga https://raw.githubusercontent.com/Kesigner/Unicorn-Auto/main/conf/trojan-soga.conf
     mv /etc/soga/trojan-soga.conf /etc/soga/soga.conf
     echo -e "trojan配置文件已下发完成！"
 	wget -P /etc/soga https://raw.githubusercontent.com/Kesigner/Unicorn-Auto/main/blockList
