@@ -1,4 +1,10 @@
 #!/bin/bash
+
+red='\033[0;31m'
+green='\033[0;32m'
+yellow='\033[0;33m'
+plain='\033[0m'
+
 if [[ $EUID -ne 0 ]]; then
     clear
     echo "错误：本脚本需要 root 权限执行。" 1>&2
@@ -55,13 +61,7 @@ restart_soga(){
 }
 
 uninstall_soga(){
-    confirm "确定要卸载 soga 吗?" "n"
-    if [[ $? != 0 ]]; then
-        if [[ $# == 0 ]]; then
-            show_menu
-        fi
-        return 0
-    fi
+    echo "${red}正在卸载soga . . .${plain}"
     systemctl stop soga
     systemctl disable soga
     rm /etc/systemd/system/soga.service -f
