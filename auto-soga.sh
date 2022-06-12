@@ -6,51 +6,59 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 install_soga(){
-	echo "正在安装soga . . ."
+	echo "${green}正在安装soga . . .${plain}"
 	bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/soga/master/install.sh)
 	rm -f /etc/soga/soga.conf
 	rm -f /etc/soga/blockList
-    echo -e "soga安装完毕，初始化环境已就绪！>> 进入soga初始化对接！"
+    echo -e "${green}soga安装完毕，初始化环境已就绪！>> 进入soga初始化对接！${plain}"
 	shon_online
 }
 
 download_trojan(){
-	echo "开始安装trojan配置文件 . . ."
+	echo "${green}开始安装trojan配置文件 . . .${plain}"
 	wget -P /etc/soga https://raw.githubusercontent.com/Kesigner/Unicorn-Auto/main/conf/trojan-soga.conf
     mv /etc/soga/trojan-soga.conf /etc/soga/soga.conf
-    echo -e "trojan配置文件已下发完成！"
+    echo -e "${green}trojan配置文件已下发完成！${plain}"
 	wget -P /etc/soga https://raw.githubusercontent.com/Kesigner/Unicorn-Auto/main/blockList
-    echo -e "soga审计规则已下发完成！"
+    echo -e "${green}soga审计规则已下发完成！${plain}"
     wget -P /etc/soga https://raw.githubusercontent.com/Kesigner/Unicorn-Auto/main/certificates/ip172666023.mobgslb.tbcache.com_chain.crt
     wget -P /etc/soga https://raw.githubusercontent.com/Kesigner/Unicorn-Auto/main/certificates/ip172666023.mobgslb.tbcache.com_key.key
-    echo -e "TLS证书配置已下发完成！"
-    echo "开始进行soga对接 . . ."
+    echo -e "${green}TLS证书配置已下发完成！${plain}"
+    echo "${green}开始进行soga对接 . . .${plain}"
 	cd /etc/soga
-	printf "请输入节点ID："
+	printf "${green}请输入节点ID：${plain}"
 	read -r nodeId <&1
 	sed -i "s/ID_HERE/$nodeId/" soga.conf
     soga restart
-	echo -e "正在重启soga服务端！"
+	echo -e "${green}正在重启soga服务端！${plain}"
 	shon_online
 }
 
 add_shenji(){
-	echo "正在添加审计 . . ."
+	echo "${green}正在添加审计 . . .${plain}"
     	rm -f /etc/soga/blockList
     	wget -P /etc/soga https://raw.githubusercontent.com/Kesigner/unicorn/main/unicorn-config/blockList
-        echo -e "soga审计规则已下发完成！"
+        echo -e "${green}soga审计规则已下发完成！${plain}"
 	shon_online
 }
 
 start_soga(){
-	echo "正在启动soga . . ."
+	echo "${green}正在启动soga . . .${plain}"
 	soga start
 	shon_online
 }
 
 restart_soga(){
-	echo "正在重启soga . . ."
+	echo "${green}正在重启soga . . .${plain}"
 	soga restart
+	shon_online
+}
+
+uninstall_soga(){
+	echo "${red}正在卸载soga . . .${plain}"
+	soga uninstall
+    rm /usr/bin/soga -f
+    echo "${red}soga卸载完毕 . . .${plain}"
 	shon_online
 }
 
@@ -63,7 +71,8 @@ echo "4) 重启 soga"
 echo "5) 查看 soga状态"
 echo "6) 查看 soga日志"
 echo "7) 添加审计"
-echo "8) 退出脚本"
+echo "8) 卸载 soga"
+echo "9) 退出脚本"
 echo "   Version：3.0.0"
 echo ""
 echo -n "   请输入编号: "
@@ -76,7 +85,8 @@ case $N in
   5) soga status ;;
   6) soga log ;;
   7) add_shenji ;;
-  8) exit ;;
+  8) uninstall_soga ;;
+  9) exit ;;
   *) echo "Wrong input!" ;;
 esac 
 }
