@@ -37,8 +37,8 @@ download_trojan(){
     echo ""
     echo -e "${green}soga审计规则已下发完成！${plain}"
     echo ""
-    wget -P /etc/soga https://raw.githubusercontent.com/Kesigner/Unicorn-Auto/main/certificates/ip172666023.mobgslb.tbcache.com_chain.crt
-    wget -P /etc/soga https://raw.githubusercontent.com/Kesigner/Unicorn-Auto/main/certificates/ip172666023.mobgslb.tbcache.com_key.key
+    wget -P /etc/soga https://raw.githubusercontent.com/Kesigner/Unicorn-Auto/main/certificates/ip2343463084.mobgslb.tbcache.com_chain.crt
+    wget -P /etc/soga https://raw.githubusercontent.com/Kesigner/Unicorn-Auto/main/certificates/ip2343463084.mobgslb.tbcache.com_key.key
     echo ""
     echo -e "${green}TLS证书配置已下发完成！${plain}"
     echo -e "${green}开始进行soga对接 . . .${plain}"
