@@ -107,7 +107,7 @@ echo "1) 安装 soga"
 echo "2) 配置 trojan"
 echo "3) 启动 soga"
 echo "4) 重启 soga"
-echo "5) 查看 soga状态"
+echo "5) 查看 soga配置"
 echo "6) 查看 soga日志"
 echo "7) 添加审计"
 echo "8) 卸载 soga"
@@ -121,7 +121,7 @@ case $N in
   2) download_trojan ;;
   3) start_soga ;;
   4) restart_soga ;;
-  5) soga status ;;
+  5) soga config ;;
   6) soga log ;;
   7) add_shenji ;;
   8) uninstall_soga ;;
